@@ -1,0 +1,226 @@
+// Main.js
+
+import React, {useEffect, useState} from "react";
+import '../chat.css';
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/storage';
+import 'firebase/compat/database';
+import {ProfileCard} from "./ProfileCard";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
+import {SignInPage} from "./SignIn";
+
+
+const chatStyles ={
+    container: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '10px',
+    },
+    avatar: {
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        marginRight: '15px',
+
+        backgroundImage: 'url(./img/mainhead.png)',
+        backgroundSize: 'cover',
+    },
+    userInfo: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    name: {
+        fontWeight: 'bold',
+        fontSize: '16px',
+        marginBottom: '5px',
+    },
+    lastMessage: {
+        fontSize: '14px',
+        color: '#666',
+    },
+};
+
+
+
+export function Chat(props){
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [selectedMenu, setSelectedMenu] = useState(null);
+    const [searchInput, setSearchInput] = useState("");
+    const [conversations, setConversations] = useState([]);
+    useEffect(() => {
+        const auth = getAuth();
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+            console.log("user has loginin")
+            setIsLoggedIn(true);
+
+
+            async function fetchData() {
+                const profileRef = firebase.database().ref(`profiles/${user.uid}`);
+                const profileSnapshot = await profileRef.once('value');
+                const userProfile = profileSnapshot.val();
+                if (userProfile) {
+                    // 用户配置存在的处理逻辑
+                } else {
+                    console.error('cannot find user');
+                    // 注意：在 useEffect 中不能直接返回 JSX 组件
+                    return;
+                }
+                const postsRef = firebase.database().ref('profiles');
+                const unsubscribe = postsRef.on('value', (snapshot) => {
+                    const posts = snapshot.val();
+                    const postsList = [];
+                    const chatPromises = [];
+                    for (let id in posts) {
+                        if (posts[id].name !== userProfile.name) {
+
+
+                            const chatPromise = (async () => {
+                                const chatRef = firebase.database().ref(`chats`);
+                                const chatId1 = `${user.uid}_${id}`; // fromuid_touid
+                                const chatId2 = `${id}_${user.uid}`; // touid_fromuid
+                                const snapshot1 = await chatRef.child(chatId1).orderByChild('timestamp').once('value');
+                                const snapshot2 = await chatRef.child(chatId2).orderByChild('timestamp').once('value');
+                                let messages = [];
+                                if (snapshot1.exists()) {
+                                    messages = snapshot1.val() ? Object.values(snapshot1.val()) : [];
+                                } else if (snapshot2.exists()) {
+                                    messages = snapshot2.val() ? Object.values(snapshot2.val()) : [];
+                                }
+                                // 按时间顺序排序messages，如果需要
+                                messages.sort((a, b) => a.timestamp - b.timestamp);
+                                return { id, ...posts[id], messages };
+                            })();
+
+                            //postsList.push({ id, ...posts[id] });
+                            chatPromises.push(chatPromise);
+                        }
+                    }
+                    const postsWithChats =Promise.all(chatPromises);
+                    setConversations(postsWithChats);
+                    //setConversations(postsList);
+                });
+
+                // 清理监听器
+                return () => postsRef.off('value', unsubscribe);
+            }
+
+            // 调用异步函数
+
+            fetchData();
+
+        } else {
+            console.log("user not loginin")
+            setIsLoggedIn(false);
+        }
+        });
+
+
+    }, []);
+
+    /*
+    const [conversations, setConversations] = useState([
+        { id: '1', name: 'Marco Alves', messages: ['Nice to meet you'] },
+        { id: '2', name: 'Keith Mills', messages: ['hello'] },
+    ]);
+    */
+    const [activeConversationId, setActiveConversationId] = useState('1');
+    const [input, setInput] = useState('');
+
+    const activeConversation = conversations.find(c => c.id === activeConversationId);
+
+    const sendMessage = (e) => {
+        e.preventDefault();
+        if (input.trim()) {
+            const updatedConversations = conversations.map(conversation => {
+                if (conversation.id === activeConversationId) {
+                    return {
+                        ...conversation,
+                        messages: [...conversation.messages, { id: Date.now(), text: input, sender: 'user' }]
+                    };
+                }
+                return conversation;
+            });
+            setConversations(updatedConversations);
+            setInput('');
+        }
+    };
+
+    const switchConversation = (id) => {
+        setActiveConversationId(id);
+    };
+
+
+    return(
+
+            <main>
+            {isLoggedIn &&
+            <div style={{display: "flex", width: "100%"}}>
+            <div style={{
+                width: "100%",
+                padding: "20px",
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+
+                <div className="chat-layout">
+                    <div className="conversation-list">
+
+                        {conversations.map(conversation => (
+                            <div
+                                key={conversation.id}
+                                className={`conversation-item ${conversation.id === activeConversationId ? 'active-conversation' : ''}`}
+                                onClick={() => switchConversation(conversation.id)}
+                            >
+                                {/*{conversation.name}*/}
+                                <div style={chatStyles.container}>
+                                    <div style={chatStyles.avatar}><img src={conversation.avatar} style={{
+                                        width: "30px",
+                                        height: "30px",
+                                        borderRadius: "50%",
+                                        marginRight: "10px"
+                                    }}/></div>
+                                    <div style={chatStyles.userInfo}>
+                                        <div style={chatStyles.name}>{conversation.name}</div>
+                                        {/*
+                                        <div style={chatStyles.lastMessage}>{conversation.messages[0]}</div>
+                                       */}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+
+                    </div>
+                    <div className="chat-container">
+                        <div className="chat-header">
+                            {activeConversation ? activeConversation.name : 'show chat'}
+                        </div>
+                        <div className="chat-body">
+                            {activeConversation && activeConversation.messages && activeConversation.messages.map((msg) => (
+                                <div key={msg.id} className={`message ${msg.sender === 'user' ? 'sender' : ''}`}>
+                                    {msg.text}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="chat-footer">
+                            <input
+                                className="chat-input"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyPress={(e) => e.key === 'Enter' && sendMessage(e)}
+                            />
+                            <button onClick={sendMessage}>Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div> </div>}
+            {!isLoggedIn &&  <SignInPage/>}
+            </main>
+
+    );
+};
+

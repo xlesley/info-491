@@ -1,0 +1,465 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Josefin Sans, TeX Gyre Adventor, URW Gothic L, sans-seri;
+    background: #FFF1E0; /* A light warm background */
+    color: #333; /* Dark grey color for text */
+}
+
+h1 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideFadeIn 1s ease-in-out forwards;
+}
+
+@keyframes slideFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+#logoSelf {
+    font-size: 1.4rem;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem 5%;
+    background: transparent;
+    font-size: 1.2rem;
+}
+
+
+.logo, .nav-links a, .auth a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links, .auth {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li, .auth div {
+    margin-left: 2rem;
+}
+
+
+.signup-button {
+    background-color: #FF6F61; /* Orange color for the button */
+    border: none;
+    padding: 0.5rem 1rem;
+    color: white;
+    /* text-transform: uppercase; */
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: Josefin Sans, TeX Gyre Adventor, URW Gothic L, sans-seri;
+}
+.signup-button:hover {
+    color: white;
+
+}
+
+.nav-links a:hover {
+    color: #FF6F61; /* Orange color for hover state */
+}
+#login_button:hover{
+    color: #FF6F61;
+}
+
+
+.auth {
+    display: flex;
+    /*align-items:baseline; /* Align items vertically */
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+
+
+#login_button{
+    /* margin: 20px; */
+    padding: 0.5rem 1rem;
+}
+
+.main1 {
+    text-align: center;
+    padding: 5% 10%;
+}
+.pet_label{
+    color: rgb(51 51 51 / 58%);
+    padding: 1% 30%;
+}
+.pet_input{
+    margin: 0% 30%;
+    border:none;
+    borderBottom: 1px solid #d2d2d2;
+    height: 40px;
+    outline: none;
+    width:40%;
+}
+.separator {
+    width: 2px;
+    height: 40px;
+    background-color: rgba(189, 189, 189, 0.50);
+    margin: 0 16px;
+    border-radius: 100px;
+    display: none;
+}
+
+.profile-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.title {
+    color: #FF6F61; /* Orange color for the title */
+    font-size: 5rem; /* Large font size for the title */
+    margin: 0;
+}
+
+.main1 p {
+    color: #555; /* Slightly lighter color for the paragraph */
+    font-size: 2.5rem; /* Larger font size for readability */
+    max-width: 70%; /* Max width for paragraph for better readability */
+    padding-top: 3rem;
+    margin: 1rem auto; /* Centering paragraph */
+    font-family: Josefin Sans, TeX Gyre Adventor, URW Gothic L, sans-seri;
+}
+
+.logo {
+    color: #FF6F61;
+}
+
+.footer-content {
+    background: #FF6F61; /* Footer background color */
+    color: white; /* Text color for footer */
+    padding: 2rem; /* Padding for spacing */
+    display: flex; /* Using flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+}
+
+.container {
+    max-width: 1200px; /* Max container width */
+    margin: auto; /* Center the container */
+    display: flex;
+    justify-content: space-between; /* Space out columns */
+}
+
+.column {
+    flex: 1; /* Each column takes equal space */
+    margin: 1rem; /* Margin for spacing */
+}
+
+.contact-form {
+    flex-basis: 100%; /* Contact form takes full width on smaller screens */
+}
+
+.column h2 {
+    margin-bottom: 1rem; /* Spacing under headers */
+}
+
+.column a {
+    display: block; /* Make links block for easier clicking */
+    margin-bottom: 0.5rem; /* Spacing between links */
+    color: white; /* Text color for links */
+    text-decoration: none; /* No underline on links */
+}
+
+.column a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+}
+
+input[type="email"], textarea {
+    width: 100%; /* Full width inputs */
+    padding: 1rem; /* Padding for inputs */
+    margin: 0.5rem 0; /* Margin for spacing */
+    border: none; /* No border */
+    border-radius: 10px;
+}
+
+textarea {
+    height: 150px; /* Fixed height for textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+button {
+    background-color: #333; /* Button background color */
+    color: white; /* Button text color */
+    padding: 1rem 2rem; /* Button padding */
+    border: none; /* No border */
+    cursor: pointer; /* Cursor for clicking */
+    margin-top: 1rem; /* Spacing above button */
+}
+
+
+/* services section */
+.services-section {
+    padding: 2rem 0
+}
+
+.services-section h2 {
+    text-align: center;
+    color: #FF6F61;
+    font-size: 5rem;
+}
+
+.services-container {
+    display: flex; /* Use flexbox to layout service items */
+    flex-wrap: wrap; /* Allow the items to wrap on smaller screens */
+    justify-content: space-around; /* Center the items in the container */
+    padding: 1rem; /* Space between the items */
+  }
+
+
+.service-item {
+    width: 25%;
+    display: flex; /* Enable flexbox */
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center children horizontally */
+    text-align: center; /* Center text */
+}
+  
+.service-item img {
+    /*max-width: 400px; /* Ensures the image is not wider than its container */
+    /*max-height: 500px; /* Sets a maximum height for the image */
+    /*margin-bottom: 1rem; /* Space below the image */
+    
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    overflow: hidden;
+}
+
+.service-item button {
+   margin-bottom: 4rem;
+   background-color: #FF6F61;
+  }
+
+.hidden {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Fade in effect */
+.visible {
+    opacity: 1;
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .nav-links, .auth {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links li, .auth div {
+        margin: 0.5rem 0;
+    }
+
+    .signup-button {
+        margin-top: 0.5rem;
+    }
+
+    .main1 {
+        padding: 10% 5%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .main1 p {
+        font-size: 1rem;
+    }
+
+    .service-item {
+        width: 49%; /* 2 cards per row on smaller screens */
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .service-item {
+        width: 100%; /* 1 card per row on smallest screens */
+    }
+}
+
+/* profile page start */
+
+.profile-page-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.profile-card-main-wrap {
+    display: block;
+    margin: 5em;
+    padding: 1% 30%;
+}
+
+.profile-card-intro-top {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.profile-card-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 3rem;
+    margin-left: 0;
+}
+
+.profile-card-left {
+    flex-basis: 10%;
+}
+
+.profile-list-top {
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-photo-wrap {
+    display: block;
+    height: 25rem;
+    width: 18rem;
+    background-color: lightgray;
+    border-radius: 0.5rem;
+}
+
+.profile-photo-wrap > img {
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.profile-card-right {
+    flex-basis: 90%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.profile-card-icon-wrap {
+    /*background-color: #F0EDFE;*/
+    height: 2.5rem;
+    width: 2.5rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+.profile-card-icon-wrap1 {
+    /*background-color: #F0EDFE;*/
+    height: 2.5rem;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.profile-card-icon {
+    height: 1.5rem;
+    width:1.5rem;
+}
+
+.profile-card-info ul li{
+    margin-left: -40px;
+    list-style: none;
+    padding: 10px;
+}
+
+.list-items {
+    gap: 0.5rem;
+}
+
+.interests-wrap {
+    /* margin: 1.5rem 0; */
+    display: block;
+}
+
+.interests-wrap > h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.interests-wrap .tags {
+    width: auto;
+}
+
+.rounded-button {
+    border-radius: 10px;
+    color: #6750F1;
+}
+
+.bottom-button {
+    display: inline-flex;
+    background: #6750F1;
+    padding: 1rem;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    width: 170px;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.textbox {
+    display: block;
+    background-color: #6750F10D;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: lighter;
+    color: #232224;
+}
+
+.textbox > h4 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.textbox > p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+.success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+.size-two {
+    color: #232224;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-bottom: 2rem;
+}
+/* profile page end */

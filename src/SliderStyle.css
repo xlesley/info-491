@@ -1,0 +1,41 @@
+
+input[type="range"] {
+    width: 100%;
+}
+
+/* 修改滑动条滑块的颜色为红色（适用于大部分现代浏览器） */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background: red;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    background: red;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+input[type="range"]::-ms-thumb {
+    background: red;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+
+input[type="range"]::-webkit-slider-runnable-track {
+    background: #ddd;
+}
+
+input[type="range"]::-moz-range-track {
+    background: #ddd;
+}
+
+input[type="range"]::-ms-track {
+    background: #ddd;
+}
