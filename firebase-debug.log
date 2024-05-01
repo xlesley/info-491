@@ -1,0 +1,30 @@
+[debug] [2023-11-30T18:12:35.880Z] ----------------------------------------------------------------------
+[debug] [2023-11-30T18:12:35.882Z] Command:       /usr/local/bin/node /usr/local/bin/firebase login:add aronacho@uw.edu
+[debug] [2023-11-30T18:12:35.882Z] CLI Version:   12.9.1
+[debug] [2023-11-30T18:12:35.882Z] Platform:      darwin
+[debug] [2023-11-30T18:12:35.882Z] Node Version:  v20.8.0
+[debug] [2023-11-30T18:12:35.882Z] Time:          Thu Nov 30 2023 10:12:35 GMT-0800 (Pacific Standard Time)
+[debug] [2023-11-30T18:12:35.882Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=566788663&redirect_uri=http%3A%2F%2Flocalhost%3A9005&login_hint=aronacho%40uw.edu
+[info] 
+[info] Waiting for authentication...
+[debug] [2023-11-30T18:12:54.466Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
+[debug] [2023-11-30T18:12:54.466Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"c5fe4965-ebd4-4b61-947e-0d819fe5bfc3"}
+[debug] [2023-11-30T18:12:55.148Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
+[debug] [2023-11-30T18:12:55.149Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"qvYsaFhfkItdjL-i5fL5BpS7OLCtyuu719C5t64-ZJE"}
+[info] 
+[info] To sign in to the Firebase CLI:
+[info] 
+[info] 1. Take note of your session ID:
+[info] 
+[info]    C5FE4
+[info] 
+[info] 2. Visit the URL below on any device and follow the instructions to get your code:
+[info] 
+[info]    https://auth.firebase.tools/login?code_challenge=GI2S1yp6hzoR6jj4YAwMyOvSvK3hzuxnjo91xMVHZo8&session=c5fe4965-ebd4-4b61-947e-0d819fe5bfc3&attest=qvYsaFhfkItdjL-i5fL5BpS7OLCtyuu719C5t64-ZJE
+[info] 
+[info] 3. Paste or enter the authorization code below once you have it:
+[info] 
