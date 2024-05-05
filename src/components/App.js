@@ -6,10 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { MyProfile } from "./MyProfile";
 import { useState } from "react";
 import { onAuthStateChanged, getAuth } from "firebase/auth";
-import { SignInPage, SignInRedirectBtns } from "./SignIn";
+import { SignInPage } from "./SignIn";
 import {Onboard} from "./Onboard";
 import {Main} from "./Main";
-import {Pet} from "./Pet";
 import {Post} from "./Post";
 import {Comment} from "./Comment";
 import {Chat} from "./Chat";
@@ -26,32 +25,19 @@ export function App(props) {
     })
     return (
         <Router>
-            {/* <div className="container">*/}
-
-                <NavBar />
-
-                <Routes>
-                    {/*
-                    <Route path="" element={<Feed currUser={currUser}/>} />
-                    */}
-                    <Route path="" element={<Onboard/>} />
-
-                    
-                    {/* <Route  path="/feed" element=INSERT ELEMENT NAME FOR FEED PAGE HERE */}
-                    <Route path="/create-profile" element={<ProfileCard currUser={currUser}/>} />
-                    <Route path="/my-profile" element={<MyProfile currUser={currUser}/>} />
-                    <Route path="/sign-in" element={<SignInPage currUser={currUser}/>} />
-                    <Route path="/main" element={<Main currUser={currUser} />} />
-                    <Route path="/pet" element={<Pet currUser={currUser}/>} />
-                    <Route path="/post" element={<Post currUser={currUser}/>} />
-                    <Route path="/comment/:id" element={<Comment currUser={currUser}/>} />
-                    <Route path="/chat" element={<Chat currUser={currUser}/>} />
-                </Routes>
-
-                <Footer />
-
-            {/* </div>*/}
-
+            <NavBar />
+            <Routes>
+                <Route path="" element={<Onboard/>} />
+                <Route path="/create-profile" element={<ProfileCard currUser={currUser}/>} />
+                <Route path="/my-profile" element={<MyProfile currUser={currUser}/>} />
+                <Route path="/sign-in" element={<SignInPage currUser={currUser}/>} />
+                <Route path="/main" element={<Main currUser={currUser} />} />
+                <Route path="/post" element={<Post currUser={currUser}/>} />
+                <Route path="/comment/:id" element={<Comment currUser={currUser}/>} />
+                <Route path="/chat" element={<Chat currUser={currUser}/>} />
+                <Route path="/Onboard" element={<Onboard />}/>
+            </Routes>
+            <Footer />
         </Router>
     )
 }

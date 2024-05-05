@@ -34,17 +34,10 @@ export function NavBar(props) {
   return (
     <header>
       <nav className="navbar">
-        <div className="logo" id="logoSelf">PetLife</div>
+        <div ><Link to="/Onboard" className="logo" id="logoSelf">PetLife</Link></div>
         <ul className="nav-links" id="logo-text">
-          {/*
-          <li><a href="#services">Services</a></li>
-           */}
           <li><Link to="/main">Home</Link></li>
           <li><Link to="/post">Post</Link></li>
-          {/*
-          <li><a href="#work">About Team</a></li>
-           */}
-          <li><Link to="/pet">Create Pet</Link></li>
           <li><Link to="/chat">Chat</Link></li>
         </ul>
         <div className="auth">

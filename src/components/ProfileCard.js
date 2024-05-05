@@ -11,16 +11,20 @@ export function ProfileCard(props) {
     const [country, setCountry] = useState('');
     const [university, setUniversity] = useState('');
     const [languages, setLanguages] = useState('');
-    const [interests, setInterests] = useState([]);
-    const [aboutMe, setAboutMe] = useState('');
     const [avatar, setAvatar] = useState(null);
 
-    const handleInterestsChange = (interest) => {
-        if (interests.includes(interest)) {
-            setInterests(interests.filter((item) => item !== interest));
-        } else {
-            setInterests([...interests, interest]);
-        }
+    const [petName, setPetName] = useState('');
+    const [birthday, setBirthday] = useState('');
+
+    const [breed, setBreed] = useState('');
+    const [petType, setPetType] = useState('');
+    const [weight, setWeight] = useState(5);
+
+    const handleChange = (event) => {
+        setWeight(event.target.value);
+    };
+    const handleBreedChange = (e) => {
+        setBreed(e.target.value);
     };
 
     const handleAvatarChange = (e) => {
@@ -39,12 +43,23 @@ export function ProfileCard(props) {
                 country: country,
                 university: university,
                 languages: languages,
-                interests: interests,
-                aboutMe: aboutMe,
+
                 avatar: url,
                 uid: props.currUser.uid,
             }
             await firebase.database().ref('profiles').child(props.currUser.uid).set(profileData);
+
+            const profileData1 = {
+                name: petName,
+                birthday: birthday,
+                weight: weight,
+                breed,
+                petType,
+            }
+            await firebase.database().ref('pets').child(props.currUser.uid).set(profileData1);
+
+
+
             setSubmitSuccess(true); // Set submission success status to true
         } catch (error) {
             console.error(error);
@@ -69,6 +84,30 @@ export function ProfileCard(props) {
             <div><input type="text" className="pet_input" value={languages} onChange={(e) => setLanguages(e.target.value)} /></div>
             <div className="pet_label">Avatar</div>
             <div><input type="file" className="pet_input" onChange={handleAvatarChange} /></div>
+
+            <div className="pet_label">Name of Pet </div>
+            <div ><input type="text" className="pet_input" value={petName} onChange={(e) => setPetName(e.target.value)} /> </div>
+            <div className="pet_label">Birthday</div>
+            <div ><input type="text" className="pet_input" value={birthday} onChange={(e) => setBirthday(e.target.value)} /></div>
+            <div className="pet_label">Breed</div>
+            <div><select  className="pet_input" style={ {height: "40px"}} onChange={handleBreedChange}><option value="Siamese">Siamese</option>
+                <option value="Persian">Persian</option></select> </div>
+            <div className="pet_label">Pet Type </div>
+            <div ><input type="text" className="pet_input" value={petType} onChange={(e) => setPetType(e.target.value)} /> </div>
+
+
+            <div className="pet_label" >Weight </div>
+            <div className="pet_input">
+                <input
+                    type="range"
+                    min="0"
+                    max="10"
+                    value={weight}
+                    onChange={handleChange}
+                />
+                {weight}
+            </div>
+
             <button  style={{
 
                 color: 'white',

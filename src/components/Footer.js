@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 export function Footer(props) {
 
@@ -19,15 +18,7 @@ export function Footer(props) {
                   <a href="https://instagram.com">Instagram</a>
                   <a href="https://facebook.com">Facebook</a>
               </div>
-              <div className="column contact-form">
-                  <h2>Let's stay connected</h2>
-                  <p>Reach out about a project, collaboration or just to say hello!</p>
-                  <form action="#" method="POST">
-                      <input type="email" id="email" name="email" placeholder="Email *" />
-                      <textarea id="message" name="message" placeholder="Message *"></textarea>
-                      <button type="submit">Send Away</button>
-                  </form>
-              </div>
+
           </div>
       </footer>
   )

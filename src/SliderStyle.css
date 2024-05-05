@@ -3,7 +3,6 @@ input[type="range"] {
     width: 100%;
 }
 
-/* 修改滑动条滑块的颜色为红色（适用于大部分现代浏览器） */
 input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;

@@ -7,30 +7,6 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
 import {ProfileCard} from "./ProfileCard";
-
-const mainStyles = {
-
-    menu:{
-
-    },
-    search:{
-        width: "100%",
-        backgroundColor: "#f0f0f0",
-        border: "none",
-        borderRadius: "10px",
-        padding: "10px",
-    },
-    menuContainer:{
-        display: "flex",
-    },
-
-    menuText:{
-        marginLeft: "30px",
-        color:"#0f0f0f",
-        fontWeight: "bold"
-    }
-};
-
 export function Comment(props){
     const [submitSuccess, setSubmitSuccess] = useState(false);
     const [content, setContent] = useState('');
@@ -122,7 +98,7 @@ export function Comment(props){
 
 
                             <textarea id="message" name="message" placeholder="comment" style={{width:"95%",margin:"2% 0%"}} value={content} onChange={(e) => setContent(e.target.value)}></textarea>
-                            <button type="submit" style={{width:"20%",alignItems:"center"}}  onClick={handleSubmit} >Comment</button>
+                            <button type="submit" style={{width:"20%",alignItems:"center"}}  onClick={handleSubmit} class="commentButton">Comment</button>
 
                         </div>
                         {submitSuccess && <div className="success-popup">Success</div>}

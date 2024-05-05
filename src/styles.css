@@ -261,6 +261,56 @@ button {
     opacity: 1;
 }
 
+.commentButton {
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.commentButton:hover {
+    opacity: 80%;
+}
+
+.posts {
+    cursor: pointer;
+}
+
+.singlePost {
+    opacity: 60%;
+}
+
+.singlePost:hover {
+    background-color:#FFFFFF;
+    opacity: 100%;
+}
+
+#searchPlaceholder {
+    font-family: monospace;
+}
+
+.postSubmit {
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.postSubmit:hover {
+    opacity: 80%;
+}
+
+.chatSend {
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.chatSend:hover {
+    opacity: 80%;
+}
+
+.chat-input {
+    border-radius: 10px;
+    border-color: transparent;
+}
 
 
 @media screen and (max-width: 768px) {

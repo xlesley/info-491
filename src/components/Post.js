@@ -56,7 +56,7 @@ export function Post(props) {
     return (
         <main>
             <div className="pet_label">Title</div>
-            <div ><input type="text" className="pet_input" value={title} onChange={(e) => setTitle(e.target.value)} /> </div>
+            <div ><input type="text" className="pet_input" value={title} onChange={(e) => setTitle(e.target.value)} id="postTitle"/> </div>
             <div className="pet_label">Content</div>
             <div ><textarea  className="pet_input" style={{height:"80px",width:"38.5%"}} value={content} onChange={(e) => setContent(e.target.value)} /></div>
             <div className="pet_label">Picture</div>
@@ -74,7 +74,8 @@ export function Post(props) {
             }}
                      type="submit"
                      onClick={handleSubmit}
-            >Save</button>
+                     className="postSubmit"
+            >Submit</button>
             {submitSuccess && <div className="success-popup">Success</div>}
         </main>
 

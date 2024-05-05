@@ -4,7 +4,6 @@ import {EmailAuthProvider, getAuth, GoogleAuthProvider} from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 export function SignInPage (props) {
     const navigate = useNavigate();
-//an object of configuration values
     const firebaseUIConfig = {
         signInOptions: [ //array of sign in options supported
         //array can include just "Provider IDs", or objects with the IDs and options

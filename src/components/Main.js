@@ -1,15 +1,11 @@
 // Main.js
 
 import React, { useState,useEffect } from "react";
-import { MyProfile } from './MyProfile';
-
-import { Comment } from './Comment';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
 import { useNavigate } from 'react-router-dom';
-
-//import { Chat } from './Chat';
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const mainStyles = {
 
@@ -64,9 +60,6 @@ export function Main(props){
         setSearchInput(e.target.value);
     };
 
-    const handleLikeClick = (cardId) => {
-        // Handle like button click for a specific card
-    };
     const handleKeyDown = (e) => {
 
         if (e.keyCode === 13) {
@@ -83,20 +76,19 @@ export function Main(props){
 
             <div style={{ width: "100%", padding: "20px",height:"100%",display: "flex", flexDirection: "column",justifyContent: "center",alignItems:"center" }}>
 
-                <div style={{ marginBottom: "20px",width:"50%",height:"50px",alignItems:"center",display:"flex" }}>
-                    <input type="text" value={searchInput} onChange={handleSearchInputChange} style={mainStyles.search} placeholder="Search..."  onKeyDown={handleKeyDown} />
+                <div style={{ marginBottom: "20px",width:"50%",height:"50px",alignItems:"center",display:"flex" }} >
+                    <input type="text" value={searchInput} onChange={handleSearchInputChange} style={mainStyles.search} placeholder="Search..."  onKeyDown={handleKeyDown} id="searchPlaceholder"/>
                 </div>
 
                 <div style={{ padding: "10px"}}>
-                    <div style={{ display: "flex", flexWrap: "wrap" }}>
+                    <div style={{ display: "flex", flexWrap: "wrap" }} className="posts">
                         {cardsData.map((card) => (
-                            <div key={card.id} style={{ width: "22%", margin: "10px", border: "0px solid #ccc", padding: "10px",display: "flex", flexDirection: "column" }}>
+                            <div key={card.id} style={{ width: "22%", margin: "10px", border: "0px solid #ccc", padding: "10px",display: "flex", flexDirection: "column" }} class="singlePost">
                                 <img src={card.picture} alt="Card" style={{ width: "100%", height: "auto" }} onClick={() => handleCardClick(card)}/>
                                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "10px" }}>
                                     <div style={{ display: "flex", alignItems: "center" }}>
                                         <img src={card.avatar}  style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "10px" }} />
                                         <span style={{fontWeight: "bold"}}>{card.title}</span>
-
                                     </div>
 
                                 </div>

@@ -1,11 +1,8 @@
-// Main.js
-
 import React, {useEffect, useState} from "react";
 import '../chat.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/storage';
 import 'firebase/compat/database';
-import {ProfileCard} from "./ProfileCard";
 import {getAuth, onAuthStateChanged} from "firebase/auth";
 import {SignInPage} from "./SignIn";
 
@@ -108,12 +105,6 @@ export function Chat(props){
 
     }, []);
 
-    /*
-    const [conversations, setConversations] = useState([
-        { id: '1', name: 'Marco Alves', messages: ['Nice to meet you'] },
-        { id: '2', name: 'Keith Mills', messages: ['hello'] },
-    ]);
-    */
     const [activeConversationId, setActiveConversationId] = useState('1');
     const [input, setInput] = useState('');
 
@@ -206,7 +197,7 @@ export function Chat(props){
                     </div>
                     <div className="chat-container">
                         <div className="chat-header">
-                            {activeConversation ? activeConversation.name : 'show chat'}
+                            {activeConversation ? activeConversation.name : 'Chat History'}
                         </div>
                         <div className="chat-body">
                             {activeConversation && activeConversation.messages && activeConversation.messages.map((msg) => (
@@ -222,7 +213,7 @@ export function Chat(props){
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyPress={(e) => e.key === 'Enter' && sendMessage(e)}
                             />
-                            <button onClick={sendMessage}>Send</button>
+                            <button onClick={sendMessage} className="chatSend">Send</button>
                         </div>
                     </div>
                 </div>
