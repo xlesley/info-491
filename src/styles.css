@@ -312,6 +312,27 @@ button {
     border-color: transparent;
 }
 
+input[type="text"] {
+    border-radius: 10px;
+}
+
+.save-button {
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+.save-button:hover{
+    opacity: 80%;
+}
+
+#sign-out {
+    font-family: inherit;
+    border-radius: 10px;
+}
+
+#sign-out:hover {
+    opacity:80%
+}
 
 @media screen and (max-width: 768px) {
     .nav-links, .auth {

@@ -16,16 +16,13 @@ export function ProfileCard(props) {
     const [petName, setPetName] = useState('');
     const [birthday, setBirthday] = useState('');
 
-    const [breed, setBreed] = useState('');
     const [petType, setPetType] = useState('');
     const [weight, setWeight] = useState(5);
 
     const handleChange = (event) => {
         setWeight(event.target.value);
     };
-    const handleBreedChange = (e) => {
-        setBreed(e.target.value);
-    };
+
 
     const handleAvatarChange = (e) => {
         if (e.target.files[0]) {
@@ -53,7 +50,6 @@ export function ProfileCard(props) {
                 name: petName,
                 birthday: birthday,
                 weight: weight,
-                breed,
                 petType,
             }
             await firebase.database().ref('pets').child(props.currUser.uid).set(profileData1);
@@ -89,9 +85,6 @@ export function ProfileCard(props) {
             <div ><input type="text" className="pet_input" value={petName} onChange={(e) => setPetName(e.target.value)} /> </div>
             <div className="pet_label">Birthday</div>
             <div ><input type="text" className="pet_input" value={birthday} onChange={(e) => setBirthday(e.target.value)} /></div>
-            <div className="pet_label">Breed</div>
-            <div><select  className="pet_input" style={ {height: "40px"}} onChange={handleBreedChange}><option value="Siamese">Siamese</option>
-                <option value="Persian">Persian</option></select> </div>
             <div className="pet_label">Pet Type </div>
             <div ><input type="text" className="pet_input" value={petType} onChange={(e) => setPetType(e.target.value)} /> </div>
 
@@ -121,6 +114,7 @@ export function ProfileCard(props) {
             }}
                      type="submit"
                      onClick={handleSubmit}
+                     className="save-button"
             >Save</button>
             {submitSuccess && <div className="success-popup">Success</div>}
         </main>

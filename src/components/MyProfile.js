@@ -167,7 +167,7 @@ export function MyProfile(props) {
 
               </>
           )}
-          <button className="bottom-button" style={{backgroundColor:"#333"}} onClick={handleSignOut}>Sign Out</button>
+          <button className="bottom-button" style={{backgroundColor:"#333"}} onClick={handleSignOut} id="sign-out">Sign Out</button>
       </div>
 
 
